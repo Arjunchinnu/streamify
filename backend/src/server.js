@@ -2,6 +2,7 @@ import express from "express";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import videoRoutes from "./routes/videoRoutes.js";
 import dotenv from "dotenv";
 import connectdb from "./lib/db.js";
 import cookieParser from "cookie-parser";
@@ -29,6 +30,7 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/video", videoRoutes);
 
 const port = process.env.PORT || 5001;
 
@@ -40,7 +42,6 @@ const port = process.env.PORT || 5001;
 // }
 
 // Remove this block entirely for Render separate deployments
-
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
