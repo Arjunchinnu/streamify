@@ -32,12 +32,15 @@ app.use("/api/chat", chatRoutes);
 
 const port = process.env.PORT || 5001;
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "../frontend/dist")));
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+//   });
+// }
+
+// Remove this block entirely for Render separate deployments
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
