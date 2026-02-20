@@ -1,0 +1,15 @@
+{
+  "name": "streamfy",
+  "version": "1.0.0",
+  "main": "index.js",
+   "scripts": {
+    "install-all": "npm install --prefix backend && npm install --prefix frontend",
+    "build-frontend": "npm run build --prefix frontend",
+    "start-backend": "node backend/index.js",
+    "start": "npm run start-backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Streamfy - Language Learning Chat & Video App"
+}
