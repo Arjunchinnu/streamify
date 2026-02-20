@@ -95,7 +95,7 @@ export async function login(req, res) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    //token creating 
+    //token creating
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, {
       expiresIn: "7d",
     });
@@ -104,7 +104,7 @@ export async function login(req, res) {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       httpOnly: true,
       sameSite: "None",
-      secure: true, 
+      secure: process.env.NODE_ENV === "production",
     });
 
     // res.cookie("jwt", token, {
