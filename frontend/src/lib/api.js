@@ -15,7 +15,7 @@ export const logout = async () => {
   return response.data;
 };
 
-export const getAuthUser = async () => { 
+export const getAuthUser = async () => {
   try {
     const res = await axiosInstance.get("/auth/me");
     return res.data;
@@ -76,4 +76,7 @@ export async function acceptFriendRequest(requestId) {
   return response.data;
 }
 
-  
+export async function getStreamToken() {
+  const response = await axiosInstance.get("/chat/token");
+  return response.data;
+}
