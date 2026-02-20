@@ -23,21 +23,23 @@ app.use(
       "https://streamify-frontend-kvhy.onrender.com", // deployed frontend
     ],
     credentials: true, // allow cookies and credentials
-  })
+  }),
 );
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5001;
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/public")));
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+  });
 }
 
-
 app.listen(port, () => {
-  console.log("Server is running on port 5001");
+  console.log(`Server is running on port ${port}`);
   connectdb();
 });
