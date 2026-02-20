@@ -15,11 +15,15 @@ app.use(express.json());
 app.use(cookieParser());
 
 const __dirname = path.resolve();
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  }),
+    origin: [
+      "http://localhost:5173", // local development frontend
+      "https://streamify-frontend-kvhy.onrender.com", // deployed frontend
+    ],
+    credentials: true, // allow cookies and credentials
+  })
 );
 
 app.use("/api/auth", authRoutes);
