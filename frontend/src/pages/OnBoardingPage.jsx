@@ -27,6 +27,7 @@ const onBoardingPage = () => {
     profile: authUser?.profile || "",
   });
 
+
   const {
     mutate: onboardingMutation,
     isPending,
@@ -43,19 +44,16 @@ const onBoardingPage = () => {
     },
   });
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   completeOnboarding(formState);
-  // };
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onboardingMutation(formState); // ✅ USE MUTATION
+    onboardingMutation(formState);
   };
 
   const handleRandomAvatar = (e) => {
     e.preventDefault();
-    const idx = Math.floor(Math.random() * 100) + 1;
-    const randomAvatar = `https://avatar.iran.liara.run/public/${idx}.png`;
+    const idx = Math.floor(Math.random() * 35) + 1;
+    const randomAvatar = `https://cdn.jsdelivr.net/gh/alohe/memojis/png/memo_${idx}.png`;
     setFormState({ ...formState, profile: randomAvatar });
     toast.success("Avatar changed succesfully");
   };
