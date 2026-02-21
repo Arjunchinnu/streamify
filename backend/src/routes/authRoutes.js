@@ -19,16 +19,14 @@ router.post("/onboarding", protectedRoute, onboard);
 
 import jwt from "jsonwebtoken";
 
-router.get("/me", protectedRoute, (req, res) => {
-  try {
-    // Generate a new token for the logged-in user
-    const token = jwt.sign(
-      { userId: req.user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
 
-    // Send user info + token back to frontend
+router.get("/me", protectedRoute, async (req, res) => {
+  try {
+    // Generate a fresh token if you want
+    const token = jwt.sign({ userId: req.user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
     res.status(200).json({ success: true, user: req.user, token });
   } catch (err) {
     console.error("Error in /me route:", err);

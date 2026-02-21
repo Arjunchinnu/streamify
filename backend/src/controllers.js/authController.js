@@ -66,7 +66,6 @@ export async function signup(req, res) {
       user: newUser,
       token,
     });
-    
   } catch (err) {
     console.log("error in signup controller", err);
     res.status(500).json({ message: "sigup Internal Server Error " });
@@ -161,5 +160,20 @@ export async function onboard(req, res) {
   } catch (err) {
     console.log("error in onboarding controller", err);
     res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export async function me(req, res) {
+  try {
+    // Generate a new token for the logged-in user
+    const token = jwt.sign({ userId: req.user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    // Send user info + token back to frontend
+    res.status(200).json({ success: true, user: req.user, token });
+  } catch (err) {
+    console.error("Error in /me route:", err);
+    res.status(500).json({ success: false, message: "Server error" });
   }
 }
