@@ -13,7 +13,7 @@ import {
   CheckCircleIcon,
   UserPlusIcon,
 } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import FriendCard, { getLanguageFlag } from "../components/FriendCard";
 import NoFriendsFound from "../components/NoFriendsFound";
 
