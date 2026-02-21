@@ -30,7 +30,7 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
-app.use("api/video", videoRoutes);
+app.use("/api/video", videoRoutes);
 
 const port = process.env.PORT || 5001;
 
