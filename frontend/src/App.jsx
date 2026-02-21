@@ -103,7 +103,9 @@ const App = () => {
           element={
             isAuthenticated ? (
               isOnboarded ? (
-                <HomePage />
+                <Layout showSidebar={false}>
+                  <HomePage />
+                </Layout>
               ) : (
                 <OnBoardingPage />
               )
