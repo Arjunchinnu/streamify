@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import useAuthUser from "../hooks/useAuthUser";
 import { useQuery } from "@tanstack/react-query";
-import { getStreamToken } from "../lib/api";
+// import { getStreamToken } from "../lib/api";
+import { getStreamVideoToken } from "../lib/api";
 
 import {
   StreamVideo,
@@ -30,8 +31,8 @@ const CallPage = () => {
   const { authUser, isLoading } = useAuthUser();
 
   const { data: tokenData } = useQuery({
-    queryKey: ["streamToken"],
-    queryFn: getStreamToken,
+    queryKey: ["getStreamVideoToken"],
+    queryFn: getStreamVideoToken,
     enabled: !!authUser,
   });
 

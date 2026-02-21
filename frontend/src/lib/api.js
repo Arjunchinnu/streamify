@@ -80,3 +80,9 @@ export async function getStreamToken() {
   const response = await axiosInstance.get("/chat/token");
   return response.data;
 }
+
+// lib/api.js
+export async function getStreamVideoToken() {
+  const response = await axiosInstance.get("/video/token");
+  return response.data;
+}
