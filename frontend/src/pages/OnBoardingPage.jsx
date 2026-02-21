@@ -3,7 +3,7 @@ import useAuthUser from "../hooks/useAuthUser.js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast, { LoaderIcon } from "react-hot-toast";
 import { completeOnboarding } from "../lib/api.js";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import {
   CameraIcon,
   MapPinIcon,
@@ -39,7 +39,7 @@ const onBoardingPage = () => {
       queryClient.invalidateQueries({
         queryKey: ["authUser"],
       });
-      navigate("/");
+      navigate("/", { replace: true });
     },
   });
 
@@ -48,9 +48,9 @@ const onBoardingPage = () => {
   //   completeOnboarding(formState);
   // };
   const handleSubmit = (e) => {
-  e.preventDefault();
-  onboardingMutation(formState);   // ✅ USE MUTATION
-};
+    e.preventDefault();
+    onboardingMutation(formState); // ✅ USE MUTATION
+  };
 
   const handleRandomAvatar = (e) => {
     e.preventDefault();
