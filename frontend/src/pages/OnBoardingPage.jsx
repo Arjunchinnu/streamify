@@ -24,7 +24,9 @@ const onBoardingPage = () => {
     nativeLanguage: authUser?.nativeLanguage || "",
     learningLanguage: authUser?.learningLanguage || "",
     location: authUser?.location || "",
-    profile: authUser?.profile || "",
+    profile:
+      authUser?.profile ||
+      "https://cdn.jsdelivr.net/gh/alohe/memojis/png/memo_22.png",
   });
 
   const {
@@ -43,7 +45,6 @@ const onBoardingPage = () => {
     },
   });
 
- 
   const handleSubmit = (e) => {
     e.preventDefault();
     onboardingMutation(formState);
