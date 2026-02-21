@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get("/token", protectedRoute, async (req, res) => {
   try {
-    const token = generateStreamVideoToken(req.user._id);
+    const token = generateStreamToken(req.user._id);
     res.json({ token });
   } catch (err) {
     console.error("Failed to generate token:", err);
