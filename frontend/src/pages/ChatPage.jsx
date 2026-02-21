@@ -17,6 +17,7 @@ import { StreamChat } from "stream-chat";
 import toast from "react-hot-toast";
 import ChatLoader from "../components/ChatLoader";
 import CallButton from "../components/CallButton";
+
 const STREAM_API_KEY = import.meta.env.VITE_STREAM_API_KEY;
 
 const ChatPage = () => {
@@ -31,14 +32,13 @@ const ChatPage = () => {
   const { data: tokenData } = useQuery({
     queryKey: ["streamToken"],
     queryFn: getStreamToken,
-    enabled: !!authUser, // only run when above authUser is available
+    enabled: !!authUser,
   });
 
   useEffect(() => {
     const initChat = async () => {
       if (!tokenData?.token || !authUser) return;
       try {
-        // console.log("Initializing stream chat client..,");
         const client = StreamChat.getInstance(STREAM_API_KEY);
 
         await client.connectUser(
@@ -50,9 +50,7 @@ const ChatPage = () => {
           tokenData.token,
         );
 
-        //create a channel
         const channelId = [authUser._id, targetUserId].sort().join("-");
-
         const currChannel = client.channel("messaging", channelId, {
           members: [authUser._id, targetUserId],
         });
@@ -62,8 +60,8 @@ const ChatPage = () => {
         setChatClient(client);
         setChannel(currChannel);
       } catch (e) {
-        console.log("error in use effect of chatpage init ", e);
-        toast.error("could not connect to chat. please try again");
+        console.error("Chat init error:", e);
+        toast.error("Could not connect to chat. Please try again.");
       } finally {
         setLoading(false);
       }
@@ -75,9 +73,8 @@ const ChatPage = () => {
     if (channel) {
       const callUrl = `${window.location.origin}/call/${channel.id}`;
       channel.sendMessage({
-        text: `I've started a video call. join me here: ${callUrl}`,
+        text: `I've started a video call. Join me here: ${callUrl}`,
       });
-
       toast.success("Video call link sent successfully!");
     }
   };
@@ -85,12 +82,17 @@ const ChatPage = () => {
   if (loading || !chatClient || !channel) return <ChatLoader />;
 
   return (
-    <div className="px-4 sm:px-6 md:px-8 lg:px-12 mx-auto w-full max-w-full">
-      <div className="h-[93vh] w-full max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg overflow-hidden mx-auto ">
+    <div className="w-full min-h-[93vh] flex justify-center">
+      {/* Main responsive container */}
+      <div className="w-full max-w-full sm:max-w-sm md:max-w-md lg:max-w-lg px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden relative">
         <Chat client={chatClient}>
           <Channel channel={channel}>
-            <div className="w-full relative ">
-              <CallButton handleVideoCall={handleVideoCall} />
+            <div className="w-full relative">
+              {/* Fixed position for CallButton */}
+              <div className="absolute top-4 right-4 z-50">
+                <CallButton handleVideoCall={handleVideoCall} />
+              </div>
+
               <Window>
                 <ChannelHeader />
                 <MessageList />
