@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import useAuthUser from "../hooks/useAuthUser";
 import { useQuery } from "@tanstack/react-query";
-// import { getStreamToken } from "../lib/api";
-import { getStreamVideoToken } from "../lib/api";
+import { getStreamToken } from "../lib/api";
+// import { getStreamVideoToken } from "../lib/api";
 
 import {
   StreamVideo,
@@ -23,7 +23,8 @@ import PageLoader from "../components/PageLoader";
 const STREAM_API_KEY = import.meta.env.VITE_STREAM_API_KEY;
 
 const CallPage = () => {
-  console.log("api key of stream",STREAM_API_KEY)
+  console.log("call page");
+  console.log("api key of stream", STREAM_API_KEY);
   const { id: callId } = useParams();
   const [client, setClient] = useState(null);
   const [call, setCall] = useState(null);
@@ -32,8 +33,8 @@ const CallPage = () => {
   const { authUser, isLoading } = useAuthUser();
 
   const { data: tokenData } = useQuery({
-    queryKey: ["getStreamVideoToken"],
-    queryFn: getStreamVideoToken,
+    queryKey: ["getStreamToken"],
+    queryFn: getStreamToken,
     enabled: !!authUser,
   });
 
