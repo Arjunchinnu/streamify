@@ -1,6 +1,6 @@
 // backend/routes/videoRoutes.js
 import express from "express";
-import { protectedRoute } from "../middleware/protectedRoute.js";
+import { protectedRoute } from "../middleware/authMiddleware.js";
 import { generateStreamVideoToken } from "../lib/stream.js";
 
 const router = express.Router();
