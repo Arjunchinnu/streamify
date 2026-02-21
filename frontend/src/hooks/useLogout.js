@@ -13,8 +13,11 @@ const useLogout = () => {
   } = useMutation({
     mutationFn: logout,
     onSuccess: () => {
-      queryClient.clear(); // 🔥 remove all cached data
-      navigate("/login"); // 🔥 redirect
+      // 🔥 Immediately remove auth user
+      queryClient.setQueryData(["authUser"], null);
+
+      // 🔥 Clear all cached queries
+      queryClient.clear();
     },
   });
 
