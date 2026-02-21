@@ -118,11 +118,15 @@ export async function login(req, res) {
 //   res.clearCookie("jwt");
 //   res.status(200).json({ success: true, message: "Logout successfull" });
 // }
-res.clearCookie("jwt", {
-  httpOnly: true,
-  sameSite: "None",
-  secure: process.env.NODE_ENV === "production",
-});
+export function logout(req, res) {
+  res.clearCookie("jwt", {
+    httpOnly: true,
+    sameSite: "None",
+    secure: process.env.NODE_ENV === "production",
+  });
+
+  res.status(200).json({ success: true, message: "Logged out successfully" });
+}
 
 export async function onboard(req, res) {
   try {
