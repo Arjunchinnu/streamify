@@ -17,6 +17,8 @@ app.use(cookieParser());
 
 const __dirname = path.resolve();
 
+app.set("trust proxy", 1);
+
 app.use(
   cors({
     origin: [
@@ -26,6 +28,7 @@ app.use(
     credentials: true, // allow cookies and credentials
   }),
 );
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
