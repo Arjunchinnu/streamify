@@ -2,6 +2,7 @@ import { axiosInstance } from "./axios";
 
 export const signup = async (formData) => {
   const res = await axiosInstance.post("/auth/signup", formData);
+  console.log(res.data);
   return res.data;
 };
 
