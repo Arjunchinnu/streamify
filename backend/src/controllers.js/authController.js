@@ -30,8 +30,7 @@ export async function signup(req, res) {
         .json({ message: "Email already exist, please use a different email" });
     }
 
-    const idx = Math.floor(Math.random() * 100) + 1;
-    const randomAvatar = `https://avatar.iran.liara.run/public/${idx}`;
+    const randomAvatar = `https://cdn.jsdelivr.net/gh/alohe/memojis/png/memo_22.png`;
 
     const newUser = new User({
       email,
