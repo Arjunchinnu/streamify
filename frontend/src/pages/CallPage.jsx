@@ -23,6 +23,7 @@ import PageLoader from "../components/PageLoader";
 const STREAM_API_KEY = import.meta.env.VITE_STREAM_API_KEY;
 
 const CallPage = () => {
+  console.log("api key of stream",STREAM_API_KEY)
   const { id: callId } = useParams();
   const [client, setClient] = useState(null);
   const [call, setCall] = useState(null);
