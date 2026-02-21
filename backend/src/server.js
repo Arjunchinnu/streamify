@@ -20,10 +20,10 @@ const __dirname = path.resolve();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // local development frontend
-      "https://streamify-frontend-kvhy.onrender.com", // deployed frontend
+      "http://localhost:5173",
+      "https://streamify-frontend-kvhy.onrender.com", 
     ],
-    credentials: false, // allow cookies and credentials
+    credentials: false,
   }),
 );
 
@@ -34,14 +34,6 @@ app.use("/api/video", videoRoutes);
 
 const port = process.env.PORT || 5001;
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "../frontend/dist")));
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-//   });
-// }
-
-// Remove this block entirely for Render separate deployments
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

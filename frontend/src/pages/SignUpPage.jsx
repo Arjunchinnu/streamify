@@ -30,7 +30,7 @@ const SignUpPage = () => {
     signupMutation(signupData, {
       onSuccess: (data) => {
         if (data?.token) {
-          localStorage.setItem("token", data.token); // SAVE JWT
+          localStorage.setItem("token", data.token); 
         }
         queryClient.invalidateQueries({ queryKey: ["authUser"] });
       },

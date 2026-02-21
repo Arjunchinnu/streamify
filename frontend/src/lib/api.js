@@ -45,10 +45,7 @@ export async function getOutgoingFriendReqs() {
   return response.data;
 }
 
-// export async function sendFriendRequest(userId) {
-//   const response = await axiosInstance.post(`/users/friend-request/${userId}`);
-//   return response.data;
-// }
+
 
 export async function sendFriendRequest(userId) {
   if (!userId) throw new Error("User ID is required");
