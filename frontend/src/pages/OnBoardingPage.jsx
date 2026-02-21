@@ -16,7 +16,7 @@ const onBoardingPage = () => {
   const { authUser } = useAuthUser();
   const queryClient = useQueryClient();
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [formState, setFormState] = useState({
     name: authUser?.name || "",
@@ -46,7 +46,7 @@ const onBoardingPage = () => {
     e.preventDefault();
     completeOnboarding(formState);
     toast.success("User updated succesfully");
-    Navigate("/");
+    navigate("/");
   };
 
   const handleRandomAvatar = (e) => {
