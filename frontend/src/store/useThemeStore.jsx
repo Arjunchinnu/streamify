@@ -5,7 +5,7 @@ export const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   // Lazy initialization (better performance)
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "coffee";
+    return localStorage.getItem("theme") || "winter";
   });
 
   // Save theme whenever it changes
