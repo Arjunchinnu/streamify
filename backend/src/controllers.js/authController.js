@@ -69,7 +69,7 @@ export async function signup(req, res) {
     
   } catch (err) {
     console.log("error in signup controller", err);
-    res.status(500).json({ message: "cookie Internal Server Error " });
+    res.status(500).json({ message: "sigup Internal Server Error " });
   }
 }
 
