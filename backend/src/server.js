@@ -17,17 +17,15 @@ app.use(cookieParser());
 
 const __dirname = path.resolve();
 
-
 app.use(
   cors({
     origin: [
       "http://localhost:5173", // local development frontend
       "https://streamify-frontend-kvhy.onrender.com", // deployed frontend
     ],
-    credentials: true, // allow cookies and credentials
+    credentials: false, // allow cookies and credentials
   }),
 );
-
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);

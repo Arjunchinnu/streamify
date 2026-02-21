@@ -2,13 +2,12 @@ import { axiosInstance } from "./axios";
 
 export const signup = async (formData) => {
   const res = await axiosInstance.post("/auth/signup", formData);
-
-  localStorage.setItem("token", res.data.token);
+  return res.data;
 };
 
 export const login = async (formData) => {
   const res = await axiosInstance.post("/auth/login", formData);
-  localStorage.setItem("token", res.data.token);
+  return res.data;
 };
 
 export const logout = () => {
