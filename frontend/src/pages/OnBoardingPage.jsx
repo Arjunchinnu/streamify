@@ -39,14 +39,13 @@ const onBoardingPage = () => {
       queryClient.invalidateQueries({
         queryKey: ["authUser"],
       });
+      navigate("/");
     },
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     completeOnboarding(formState);
-    toast.success("User updated succesfully");
-    navigate("/");
   };
 
   const handleRandomAvatar = (e) => {
