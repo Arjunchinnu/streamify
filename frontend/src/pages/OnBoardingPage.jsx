@@ -27,7 +27,6 @@ const onBoardingPage = () => {
     profile: authUser?.profile || "",
   });
 
-
   const {
     mutate: onboardingMutation,
     isPending,
