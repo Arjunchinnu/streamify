@@ -122,10 +122,12 @@ const CallContent = () => {
   }, [callingState, navigate]);
 
   return (
+    <div className=" bg-base-100">
     <StreamTheme>
       <SpeakerLayout />
       <CallControls />
     </StreamTheme>
+    </div>
   );
 };
 

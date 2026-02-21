@@ -82,9 +82,9 @@ const ChatPage = () => {
   if (loading || !chatClient || !channel) return <ChatLoader />;
 
   return (
-    <div className="w-full min-h-[93vh] flex justify-center">
+    <div className="w-full min-h-[93vh] flex justify-center bg-[rgb(200,232,199)]">
       {/* Main responsive container */}
-      <div className="w-full max-w-full sm:max-w-sm md:max-w-md lg:max-w-lg px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden relative">
+      <div className="w-full max-w-full sm:max-w-sm md:max-w-md lg:max-w-lg px-4 sm:px-8 md:px-8 lg:px-12 overflow-hidden relative">
         <Chat client={chatClient}>
           <Channel channel={channel}>
             <div className="w-full relative">
