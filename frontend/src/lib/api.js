@@ -16,11 +16,7 @@ export const login = async (signinData) => {
 // };
 
 export const logout = async () => {
-  const res = await axiosInstance.post(
-    "/api/auth/logout",
-    {},
-    { withCredentials: true }, 
-  );
+  const res = await axiosInstance.post("/auth/logout");
   return res.data;
 };
 
