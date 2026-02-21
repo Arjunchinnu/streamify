@@ -43,10 +43,14 @@ const onBoardingPage = () => {
     },
   });
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   completeOnboarding(formState);
+  // };
   const handleSubmit = (e) => {
-    e.preventDefault();
-    completeOnboarding(formState);
-  };
+  e.preventDefault();
+  onboardingMutation(formState);   // ✅ USE MUTATION
+};
 
   const handleRandomAvatar = (e) => {
     e.preventDefault();
