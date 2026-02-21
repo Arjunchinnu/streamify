@@ -21,7 +21,10 @@ const Login = () => {
     error,
   } = useMutation({
     mutationFn: login,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["authUser"] }),
+    onSuccess: (data) => {
+      localStorage.setItem("token", data.token);
+      queryClient.invalidateQueries({ queryKey: ["authUser"] });
+    },
   });
 
   const handleLogin = (e) => {

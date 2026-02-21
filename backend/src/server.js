@@ -17,7 +17,6 @@ app.use(cookieParser());
 
 const __dirname = path.resolve();
 
-app.set("trust proxy", 1);
 
 app.use(
   cors({
