@@ -7,6 +7,8 @@ import {
 } from "../controllers.js/authController.js";
 import { protectedRoute } from "../middleware/authMiddleware.js";
 
+import jwt from "jsonwebtoken";
+
 const router = express.Router();
 
 router.post("/signup", signup);
@@ -17,7 +19,6 @@ router.post("/logout", logout);
 
 router.post("/onboarding", protectedRoute, onboard);
 
-import jwt from "jsonwebtoken";
 
 router.get("/me", protectedRoute, async (req, res) => {
   try {

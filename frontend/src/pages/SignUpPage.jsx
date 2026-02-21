@@ -18,7 +18,7 @@ const SignUpPage = () => {
 
   const {
     mutate: signupMutation,
-    isPending,
+    isLoading,
     error,
   } = useMutation({
     mutationFn: signup,
@@ -27,8 +27,19 @@ const SignUpPage = () => {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    signupMutation(signupData);
+    signupMutation(signupData, {
+      onSuccess: (data) => {
+        if (data?.token) {
+          localStorage.setItem("token", data.token); // SAVE JWT
+        }
+        queryClient.invalidateQueries({ queryKey: ["authUser"] });
+      },
+      onError: (err) => {
+        console.error("Signup error", err.response?.data || err.message);
+      },
+    });
   };
+
   return (
     <div
       className="h-screen flex items-center justify-center p-4 sm:p-6 md:p-8"
@@ -149,7 +160,7 @@ const SignUpPage = () => {
                 </div>
 
                 <button type="submit" className="btn btn-primary w-full">
-                  {isPending ? (
+                  {isLoading ? (
                     <>
                       <span className="loading loading-spinner loading-xs"></span>{" "}
                       Signing up...
