@@ -10,9 +10,18 @@ export const login = async (signinData) => {
   return response.data;
 };
 
+// export const logout = async () => {
+//   const response = await axiosInstance.post("/auth/logout");
+//   return response.data;
+// };
+
 export const logout = async () => {
-  const response = await axiosInstance.post("/auth/logout");
-  return response.data;
+  const res = await axiosInstance.post(
+    "/api/auth/logout",
+    {},
+    { withCredentials: true }, 
+  );
+  return res.data;
 };
 
 export const getAuthUser = async () => {
