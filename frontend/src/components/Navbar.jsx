@@ -1,8 +1,6 @@
 import React from "react";
 import useAuthUser from "../hooks/useAuthUser";
 import { Link, useLocation } from "react-router";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-// import { logout } from "../lib/api";
 import { BellIcon, ShipWheelIcon, LogOutIcon } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 import useLogout from "../hooks/useLogout";
